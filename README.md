@@ -4,3 +4,4 @@ CMSE 495 group project for "Analyzing Public Feedback on Environmental Policies 
 ## Contributors
 
 - [Emma Fountain](https://github.com/RandumbPurson)
+- [Ethan DeMott](https://github.com/edemott)
