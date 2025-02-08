@@ -4,9 +4,9 @@ from pdf2image import convert_from_bytes
 import pytesseract
 
 class Reg_API:
-    def __init__(self, page_size=20):
+    def __init__(self, page_size=20, apikey="e7LVpmbLfa0f0dDAx6TPzg86cG5TASGTafkxQHWg"):
         self.apibase = "https://api.regulations.gov/v4"
-        self.apikey = "e7LVpmbLfa0f0dDAx6TPzg86cG5TASGTafkxQHWg"
+        self.apikey = apikey
         self.page_size = page_size
         self.reqstr = ""
 
@@ -42,17 +42,6 @@ class Reg_API:
         self.reqstr = ""
         return response
 
-    def get_all(self):
-        responses = []
-        page = 1
-        while True:
-            response = requests.get(self.page(page).reqstr).json()
-            responses.append(response)
-            if not response["meta"]["hasNextPage"]:
-                break
-        self.reqstr = ""
-        return responses
-
 # Parse pdf bytes to get text
 def parse_pdf(pdf):
     imgs = convert_from_bytes(pdf)
@@ -73,9 +62,9 @@ class CommentParser:
         """Request attachment data for a specific comment"""
         return self.api.url(comment_data["data"]["relationships"]["attachments"]["links"]['related']).get()
     
-    def _get_comment_text(self, comment_data, attachments):
+    def _get_comment_text(self, comment_info, attachments):
         """Parse out text-comment from comment json and parse any attachments"""
-        plaintext_comment = comment_data["data"]["attributes"]["comment"]
+        plaintext_comment = comment_info["data"]["attributes"]["comment"]
         attachment_comments = []
         for attachment in attachments["data"]:
             attachment_format_urls = attachment["attributes"]["fileFormats"]
@@ -87,22 +76,20 @@ class CommentParser:
                 else:
                     print(f"Failed to parse filetype '{extension}' for attachment {attachment_format_url['fileUrl']}")
             attachment_comments.append(attachment_formats)
-        return attachment_comments
-                    
     
         return {
             "plaintext": plaintext_comment,
             "attachments": attachment_comments
         }
-        return [self.api.url(data['attributes']["fileFormats"][0]["fileUrl"]).get(get_json=False).content for data in attachments["data"]]
     
     def get_comment_data(self, comment):
         """Get and parse all relevant data for one entry of a bulk comment response"""
-        comment_data = self._get_comment_info(comment)
-        attachments = self._get_attachments(comment_data)
+        comment_info = self._get_comment_info(comment)
+        attachments = self._get_attachments(comment_info)
         return {
+            "_id": comment["id"], # use response comment ID as mongodb Primary Key _id
             "comment_response": comment,
-            "comment_data": comment_data,
+            "comment_info": comment_info,
             "attachments": attachments,
-            "comment_text": self._get_comment_text(comment_data, attachments)
+            "comment_text": self._get_comment_text(comment_info, attachments)
         }
