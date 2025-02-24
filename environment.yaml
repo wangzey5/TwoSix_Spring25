@@ -3,16 +3,18 @@ channels:
   - conda-forge
 dependencies:
   - numpy
-  - jupyter
   - pandas
   - matplotlib
   - requests
-  - pytesseract
   - ipykernel
   - conda-forge/label/python_rc::_python_rc
   - ca-certificates
   - certifi
   - openssl
-  - scikit-learn
+  - pymongo
+  - lxml
+  - fake-useragent
+  - microsoft::playwright
+  - pytesseract
   - pdf2image
 prefix: /home/emmaf/miniforge3/envs/CMSE495-TwoSix
