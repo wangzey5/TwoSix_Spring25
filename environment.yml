@@ -6,6 +6,7 @@ dependencies:
   - python=3.11
   - chromadb=0.6.3
   - sentence-transformers=3.4.1
+  - transformers=4.49.0
   - numpy=1.26
   - pymongo=4.11
   - jupyter=1.*
