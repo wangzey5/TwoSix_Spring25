@@ -1,0 +1,22 @@
+name: CMSE495-TwoSix
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - pymongo
+  - jupyter
+  - pandas
+  - matplotlib
+  - requests
+  - ipykernel
+  - conda-forge/label/python_rc::_python_rc
+  - ca-certificates
+  - certifi
+  - openssl
+  - pymongo
+  - lxml
+  - fake-useragent
+  - microsoft::playwright
+  - pytesseract
+  - pdf2image
+prefix: /home/emmaf/miniforge3/envs/CMSE495-TwoSix
