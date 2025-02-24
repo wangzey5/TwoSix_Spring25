@@ -5,6 +5,7 @@ channels:
 dependencies:
   - python=3.11
   - chromadb=0.6.3
+  - bertopic=0.16.2
   - hdbscan=0.8.39
   - sentence-transformers=3.4.1
   - transformers=4.49.0
@@ -17,4 +18,4 @@ dependencies:
   - pytesseract=0.3.13
   - ipykernel=6.28.0
   - pdf2image=1.17.0
-  - phate
+  - phate=1.0.11
