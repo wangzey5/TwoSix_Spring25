@@ -1,8 +1,8 @@
-import requests
-import numpy as np
+import warnings
 from datetime import datetime
+import requests
 
-class Reg_API:
+class RegAPI:
     def __init__(
         self, 
         page_size=20, 
@@ -12,6 +12,7 @@ class Reg_API:
         self.apikey = apikey
         self.page_size = page_size
         self.reqstr = ""
+        self.ratelimit = 1000
 
     def _add_apikey(self):
         self.reqstr = self.reqstr + f"?api_key={self.apikey}"
@@ -42,8 +43,12 @@ class Reg_API:
         return self
 
     def lastmodified(self, date, mod="ge"):
+        if isinstance(date, str):
+            date = datetime.fromisoformat(date)
         if isinstance(date, datetime):
             date = date.strftime("%Y-%m-%d %H:%M:%S")
+        else:
+            raise ValueError(f"date {date} is not a string or datetime object")
         self.reqstr = self.reqstr + f"&filter[lastModifiedDate][{mod}]={date}"
         return self
         
@@ -51,6 +56,15 @@ class Reg_API:
     ### Get response(s)
     def get(self, get_json=True):
         response = requests.get(self.reqstr)
+
+        if response.status_code >= 400:
+            raise ConnectionError(f"GET failed with code <{response.status_code}> for request: {self.reqstr}")
+
+        if "X-Ratelimit-Remaining" in response.headers:
+            self.ratelimit = int(response.headers["X-Ratelimit-Remaining"])
+            if self.ratelimit <= 0:
+                raise RuntimeError("Rate-Limit exceeded")
+
         if get_json:
             response = response.json()
         self.reqstr = ""
