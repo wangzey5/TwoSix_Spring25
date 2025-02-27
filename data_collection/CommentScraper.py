@@ -4,13 +4,15 @@ from copy import deepcopy
 import numpy as np
 from pdf2image import convert_from_bytes
 import pytesseract
+import textract
+import tempfile
 
-# Parse pdf bytes to get text
-def parse_pdf(pdf):
-    imgs = convert_from_bytes(pdf)
-    text = ""
-    for img in imgs:
-        text = text + pytesseract.image_to_string(np.array(img))
+def parse_attachment(attachment, extension):
+    with tempfile.NamedTemporaryFile(delete=True) as temp:
+        temp.write(attachment)
+        temp.flush()
+        text = textract.process(temp.name, extension=extension, encoding="utf-8").decode("utf-8")
+
     return text
 
 class APICommentDetailScraper:
@@ -29,13 +31,13 @@ class APICommentDetailScraper:
             attachment_format_urls = attachment["attributes"]["fileFormats"]
             attachment_formats = {}
             for attachment_format_url in attachment_format_urls:
-                extension = attachment_format_url["fileUrl"].split(".")[-1]
-                if extension == "pdf":
-                    attachment_formats["pdf"] = parse_pdf(
-                        self.api.url(attachment_format_url["fileUrl"]).get(get_json=False).content
-                    )
-                else:
+                extension = attachment_format_url["format"]
+                attachment = self.api.url(attachment_format_url["fileUrl"]).get(get_json=False).content
+                try:
+                    attachment_formats[extension] = parse_attachment(attachment, extension)
+                except Exception as e:
                     print(f"Failed to parse filetype '{extension}' for attachment {attachment_format_url['fileUrl']}")
+                    print(e)
             attachment_text.append(attachment_formats)
         return attachment_text
     
