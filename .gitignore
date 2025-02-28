@@ -1,2 +1,8 @@
 .ipynb_checkpoints/
 __pycache__/
+
+# Slurm output
+slurm*.out
+
+# Sensitive data
+apikeys.txt
