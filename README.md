@@ -1,10 +1,14 @@
-# TwoSix_Spring25
-CMSE 495 group project for "Analyzing Public Feedback on Environmental Policies Using Natural Language Processing" for Two Six.
+# CMSE 495 Group Project: Analyzing Public Feedback on Environmental Policies Using NLP
 
-CMSE 495 is a final year undergraduate capstone offered to data science and computational data science majors. The class involves team projects with partner firms and organizations, and teams are tasked with developing and delivering a project for the partner through the course of the semester.
+This project is part of **CMSE 495**, the final-year undergraduate capstone course for data science and computational data science majors at Michigan State University. The course involves team-based projects in collaboration with industry partners, where students develop and deliver data-driven solutions over the semester.
 
-This specific project is a natural language project done for Two Six Technologies: "Analyzing Public Feedback on Environmental Policies Using Natural Language Processing". The objective of this project is to analyze public feedback on environmental policies using
-natural language processing (NLP) techniques
+Our team is collaborating with **Two Six Technologies** on the project **"Analyzing Public Feedback on Environmental Policies Using Natural Language Processing."** The goal is to analyze public responses to environmental policies using NLP techniques. To achieve this, we are scraping comments from climate-related documents in the **[Federal Register](https://www.regulations.gov/)** and storing them in **MongoDB** for further analysis.
+
+### Technologies Used:
+- **HPCC** for high-performance computing and database storage  
+- **MongoDB** and **ChromaDB** for data storage, retrieval, and indexing  
+- **PHATE** for visualization and dimensionality reduction of text embeddings  
+- **Python** for modeling and analysis
 
 ## Installation
 
