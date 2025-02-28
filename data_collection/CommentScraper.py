@@ -2,8 +2,6 @@ from playwright.sync_api import sync_playwright
 import time
 from copy import deepcopy
 import numpy as np
-from pdf2image import convert_from_bytes
-import pytesseract
 import textract
 import tempfile
 
@@ -120,9 +118,13 @@ def insert(doc, collection):
 def exists(document, collection):
     return collection.count_documents({"id": document["id"]}, limit=1) != 0
 
-def getAllComments(apibasereq, collection):
+def getAllComments(apibasereq, collection, checkpoint_collection):
     pageNum = 1
     metaPageNum = 1
+    date = None
+    if checkpoint_collection.countDocuments() > 0:
+        date = checkpoint_collection.find()["lastmodifiedDate"]
+        apibasereq.lastmodified(date)
     while True: 
         apireq = deepcopy(apibasereq)
         try:
@@ -146,8 +148,11 @@ def getAllComments(apibasereq, collection):
             insert(doc, collection)
 
         if documents["meta"]["hasNextPage"] == False:
+            if date is not None:
+                checkpoint_collection.delete_one()
+                checkpoint_collection.insert_one({"lastmodifiedDate": date})
             date = documents["data"][-1]["attributes"]["lastModifiedDate"]
-            apireq = apireq.lastmodified(date)
+            apibasereq.lastmodified(date)
             pageNum = 1
             metaPageNum += 1
         else:
