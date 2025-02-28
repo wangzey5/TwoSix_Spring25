@@ -1,4 +1,10 @@
-import warnings
+"""
+A wrapper around the regulations.gov API.
+
+**General Workflow**
+
+Once you have an `api` instance, you can build a request using one "url constructor" (.endpoint, .url) and 0 or more "search modifiers" (.search, .page, .sort, .lastmodified). Then, to get the response call `.get()` on the object.
+"""
 from datetime import datetime
 import requests
 

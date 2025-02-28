@@ -1,3 +1,7 @@
+"""
+Entry script for scraping. To view help run `python scrape.py --help`
+"""
+
 import argparse
 
 import pymongo
