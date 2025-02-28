@@ -1,0 +1,21 @@
+name: twosix_env2
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - chromadb=0.6.3
+  - bertopic=0.16.2
+  - hdbscan=0.8.39
+  - sentence-transformers=3.4.1
+  - transformers=4.49.0
+  - numpy=1.26
+  - pymongo=4.11
+  - jupyter=1.*
+  - pandas=2.2.1
+  - matplotlib=3.9.2
+  - requests=2.32.2
+  - pytesseract=0.3.13
+  - ipykernel=6.28.0
+  - pdf2image=1.17.0
+  - phate=1.0.11
