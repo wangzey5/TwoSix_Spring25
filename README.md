@@ -6,6 +6,10 @@ CMSE 495 is a final year undergraduate capstone offered to data science and comp
 This specific project is a natural language project done for Two Six Technologies: "Analyzing Public Feedback on Environmental Policies Using Natural Language Processing". The objective of this project is to analyze public feedback on environmental policies using
 natural language processing (NLP) techniques
 
+## Installation
+
+For installation instructions, please refer to [INSTALL.md](INSTALL.md).
+
 ## Contributors
 
 - [Emma Fountain](https://github.com/RandumbPurson)
