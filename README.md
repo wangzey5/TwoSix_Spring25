@@ -14,6 +14,10 @@ Our team is collaborating with **[Two Six Technologies](https://twosixtech.com/)
 
 For installation instructions, please refer to [INSTALL.md](INSTALL.md).
 
+## Demo
+
+For an example of our analysis and code implementation, see [DemoCode.ipynb](DemoCode.ipynb).
+
 ## Contributors
 
 - [Emma Fountain](https://github.com/RandumbPurson)
