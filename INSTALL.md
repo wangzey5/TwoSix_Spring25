@@ -4,7 +4,7 @@
 
 Install this repo using
 ```bash
-git clone git@github.com:wangzey5/TwoSix_Spring25.git
+git clone https://github.com/wangzey5/TwoSix_Spring25.git
 ```
 
 ### Environment Setup
