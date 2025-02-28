@@ -6,16 +6,27 @@ class RegAPI:
     def __init__(
         self, 
         page_size=20, 
-        apikey="e7LVpmbLfa0f0dDAx6TPzg86cG5TASGTafkxQHWg"
+        apikeys=["e7LVpmbLfa0f0dDAx6TPzg86cG5TASGTafkxQHWg"]
     ):
         self.apibase = "https://api.regulations.gov/v4"
-        self.apikey = apikey
+
+        self.apikeys = apikeys
+        self.apikey_idx = 0
+        self.tried_keys = 0
+
         self.page_size = page_size
+
         self.reqstr = ""
         self.ratelimit = 1000
 
+    def _key(self):
+        return self.apikeys[self.apikey_idx]
+
+    def _next_key(self):
+        self.apikey_idx = (self.apikey_idx + 1) % len(self.apikeys)
+
     def _add_apikey(self):
-        self.reqstr = self.reqstr + f"?api_key={self.apikey}"
+        self.reqstr = self.reqstr + f"?api_key={self._key()}"
         return self
 
     ### Main url constructors
@@ -57,13 +68,20 @@ class RegAPI:
     def get(self, get_json=True):
         response = requests.get(self.reqstr)
 
-        if response.status_code >= 400:
-            raise ConnectionError(f"GET failed with code <{response.status_code}> for request: {self.reqstr}")
+        if response.status_code == 429:
+            if self.tried_keys >= len(self.apikeys):
+                self.tried_keys = 0
+                raise RuntimeError("Rate-Limit exceeded")
+            else:
+                self._next_key()
+                self.tried_keys += 1
+                return self.get(get_json)
 
         if "X-Ratelimit-Remaining" in response.headers:
             self.ratelimit = int(response.headers["X-Ratelimit-Remaining"])
-            if self.ratelimit <= 0:
-                raise RuntimeError("Rate-Limit exceeded")
+
+        if response.status_code >= 400:
+            raise ConnectionError(f"GET failed with code <{response.status_code}> for request: {self.reqstr}")
 
         if get_json:
             response = response.json()
