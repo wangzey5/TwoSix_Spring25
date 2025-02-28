@@ -20,7 +20,8 @@ def parse_attachment(attachment, extension):
     return text
 
 class APICommentDetailScraper:
-    def __init__(self, api):
+    def __init__(self, api, parseAttachments=True):
+        self.parseAttachments = parseAttachments
         self.api = api
 
     def _get_comment_details(self, comment):
@@ -53,7 +54,7 @@ class APICommentDetailScraper:
             "response": comment_details,
             "comment": {
                 "plaintext": comment_details["data"]["attributes"]["comment"],
-                "attachments": self._get_attachment_text(comment_details) 
+                "attachments": self._get_attachment_text(comment_details) if self.parseAttachments else None
             },
             "documentId": comment_atr["commentOnDocumentId"],
             "docketId": comment_atr["docketId"],
