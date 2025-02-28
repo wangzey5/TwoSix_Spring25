@@ -1,6 +1,7 @@
 name: CMSE495-TwoSix
 channels:
   - conda-forge
+  - bioconda
 dependencies:
   - numpy
   - pymongo
@@ -16,4 +17,10 @@ dependencies:
   - openssl
   - scikit-learn
   - pdf2image
+  - chromadb
+  - bertopic
+  - hdbscan
+  - sentence-transformers
+  - transformers
+  - phate
 prefix: /home/emmaf/miniforge3/envs/CMSE495-TwoSix
