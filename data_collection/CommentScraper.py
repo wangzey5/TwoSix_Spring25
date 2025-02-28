@@ -1,3 +1,9 @@
+"""
+Utilities for scraping from regulations.gov
+
+These utilities should generally not be interacted with directly, instead use `scrape.py`
+"""
+
 from playwright.sync_api import sync_playwright
 import time
 from copy import deepcopy
