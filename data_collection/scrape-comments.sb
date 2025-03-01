@@ -1,0 +1,21 @@
+#!/bin/bash --login
+
+#SBATCH --time=24:00:00
+#SBATCH --mem-per-cpu=16G
+#SBATCH --job-name=TwoSix_CommentMetaScraping
+#SBATCH --output=slurm-%x-%j.out
+
+rroot=/mnt/research/TwoSix
+
+ip addr show | grep -E "inet.*eth0" | awk -F" " '{print $2}' > $rroot/mongodb/IP.txt
+
+module purge
+module load Conda/3
+
+conda activate CMSE495-TwoSix
+
+$rroot/mongodb/mongod-start
+
+python $rroot/CMSE495-TwoSix-SS25/TwoSix_Spring25/data_collection/scrape.py meta
+
+$rroot/mongodb/mongod-stop
