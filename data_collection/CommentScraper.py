@@ -28,6 +28,20 @@ class APICommentDetailScraper:
         """Request comment-specific data given a bulk comment response json object (eg; one sample from 'api.regulations.gov/v4/comments.data')"""
         return self.api.url(comment["links"]["self"]).get()
 
+    def _get_attachment_data(self, comment_data):
+        """Request attachment data for a specific comment"""
+        attachments = self.api.url(comment_data["data"]["relationships"]["attachments"]["links"]['related']).get()
+        attachment_text = []
+        for attachment in attachments["data"]:
+            attachment_format_urls = attachment["attributes"]["fileFormats"]
+            attachment_formats = {}
+            for attachment_format_url in attachment_format_urls:
+                extension = attachment_format_url["format"]
+                attachment = self.api.url(attachment_format_url["fileUrl"]).get(get_json=False).content
+                attachment_formats[extension] = attachment
+            attachment_text.append(attachment_formats)
+        return attachment_text
+
     def _get_attachment_text(self, comment_data):
         """Request attachment data for a specific comment"""
         attachments = self.api.url(comment_data["data"]["relationships"]["attachments"]["links"]['related']).get()
@@ -54,7 +68,8 @@ class APICommentDetailScraper:
             "response": comment_details,
             "comment": {
                 "plaintext": comment_details["data"]["attributes"]["comment"],
-                "attachments": self._get_attachment_text(comment_details) if self.parseAttachments else None
+                "attachmentsParsed": self.parseAttachments,
+                "attachments": self._get_attachment_text(comment_details) if self.parseAttachments else self._get_attachment_data(comment_details)
             },
             "documentId": comment_atr["commentOnDocumentId"],
             "docketId": comment_atr["docketId"],
@@ -129,7 +144,7 @@ def getAllComments(apibasereq, collection, checkpoint_collection):
     pageNum = 1
     metaPageNum = 1
     date = None
-    if checkpoint_collection.countDocuments() > 0:
+    if checkpoint_collection.count_documents({}) > 0:
         date = checkpoint_collection.find()["lastmodifiedDate"]
         apibasereq.lastmodified(date)
     while True: 
@@ -180,4 +195,7 @@ def getCommentDetails(scraper, comments, collection):
             continue
 
         insert(comment_details, collection)
+        print(f"Getting Comment Details [{i}/{len(comments)}]", end="")
+        print(" "*100, end="\r")
         i+=1
+    print("complete")
