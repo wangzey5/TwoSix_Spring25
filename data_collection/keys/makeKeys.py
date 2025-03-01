@@ -31,10 +31,13 @@ def makeKey(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("n", type=int, help="The number of keys to create")
+    parser.add_argument("--name", help="First and last name, space separated")
+    parser.add_argument("--email", help="Email to send API keys to")
     args = parser.parse_args()
 
     for i in range(args.n):
-        makeKey()
+        first, last = args.name.split(" ")
+        makeKey(first, last, args.email)
         print(f"Created {i+1}/{args.n}", end="")
         print(" "*100, end="\r")
 
