@@ -7,6 +7,7 @@ Once you have an `api` instance, you can build a request using one "url construc
 """
 from datetime import datetime
 import requests
+from copy import deepcopy
 
 class RegAPI:
     def __init__(
@@ -93,3 +94,7 @@ class RegAPI:
             response = response.json()
         self.reqstr = ""
         return response
+
+    ### Clone
+    def clone(self):
+        return deepcopy(self)
