@@ -144,14 +144,17 @@ def getAllComments(apibasereq, collection, checkpoint_collection):
     pageNum = 1
     metaPageNum = 1
     date = None
+
+    apidatereq = apibasereq.clone()
     if checkpoint_collection.count_documents({}) > 0:
-        date = checkpoint_collection.find()["lastmodifiedDate"]
-        apibasereq.lastmodified(date)
+        date = checkpoint_collection.find().next()["lastmodifiedDate"]
+        apidatereq.lastmodified(date)
+
     while True: 
-        apireq = deepcopy(apibasereq)
+        apireq = apidatereq.clone()
         try:
             documents = apireq.sort("lastModifiedDate").page(pageNum).get()
-            print(f"[{metaPageNum}](pg {pageNum}/20) ratelimit={apireq.ratelimit}", end="")
+            print(f"[{metaPageNum}](pg {pageNum}/40) ratelimit={apireq.ratelimit}", end="")
             print(" "*100, end="\r")
         except RuntimeError:
             print("Rate Limit exceeded, retrying in 1 minute")
@@ -171,10 +174,10 @@ def getAllComments(apibasereq, collection, checkpoint_collection):
 
         if documents["meta"]["hasNextPage"] == False:
             if date is not None:
-                checkpoint_collection.delete_one()
+                checkpoint_collection.delete_one({})
                 checkpoint_collection.insert_one({"lastmodifiedDate": date})
             date = documents["data"][-1]["attributes"]["lastModifiedDate"]
-            apibasereq.lastmodified(date)
+            apidatereq = apibasereq.clone().lastmodified(date)
             pageNum = 1
             metaPageNum += 1
         else:
