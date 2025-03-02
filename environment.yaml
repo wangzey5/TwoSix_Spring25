@@ -11,7 +11,7 @@ dependencies:
   - ca-certificates
   - certifi
   - openssl
-  - pymongo
+  - pymongo <= 4.7
   - lxml
   - fake-useragent
   - microsoft::playwright
