@@ -5,6 +5,7 @@ __pycache__/
 slurm*.out
 
 # Sensitive data
-keys/
 keys/**
 apikeys.txt
+apikeys.key
+*.key
