@@ -5,7 +5,7 @@ from concurrent.futures import ProcessPoolExecutor
 from RegAPI import RegAPI
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--file", default="keys/apikeys.txt")
+parser.add_argument("--file", default="keys/apikeys.key")
 
 args = parser.parse_args()
 
