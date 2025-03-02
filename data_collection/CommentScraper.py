@@ -107,7 +107,7 @@ class PWCommentDetailScraper:
         return [h.get_attribute("href") for h in  page.locator('xpath=//section[@class="section-hierarchy"]//a').all()]
 
     def get_comment_details(self, comment):
-        url = f"{typemap[comment["type"]]}/{comment["id"]}"
+        url = f"{typemap[comment['type']]}/{comment['id']}"
         page = self.browser.new_page()
         page.goto(self.baseurl + url)
         page.wait_for_timeout(2000)
@@ -154,8 +154,7 @@ def getAllComments(apibasereq, collection, checkpoint_collection):
         apireq = apidatereq.clone()
         try:
             documents = apireq.sort("lastModifiedDate").page(pageNum).get()
-            print(f"[{metaPageNum}](pg {pageNum}/40) ratelimit={apireq.ratelimit}", end="")
-            print(" "*100, end="\r")
+            print(f"[{metaPageNum}](pg {pageNum}/40) ratelimit={apireq.ratelimit}", end=(" "*100)+"\r")
         except RuntimeError:
             print("Rate Limit exceeded, retrying in 1 minute")
             time.sleep(60)
@@ -198,7 +197,6 @@ def getCommentDetails(scraper, comments, collection):
             continue
 
         insert(comment_details, collection)
-        print(f"Getting Comment Details [{i}/{len(comments)}]", end="")
-        print(" "*100, end="\r")
+        print(f"Getting Comment Details [{i}/{len(comments)}]", end=(" "*100) + "\r")
         i+=1
     print("complete")
