@@ -9,3 +9,7 @@ keys/**
 apikeys.txt
 apikeys.key
 *.key
+
+# Temporary/Intermediate Data Files
+*.npy
+data/**
