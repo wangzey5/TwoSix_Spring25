@@ -12,7 +12,8 @@ dependencies:
   - ca-certificates
   - certifi
   - openssl
-  - pymongo
+  - pymongo <= 4.7
+  - microsoft::playwright
   - chromadb
   - bertopic
   - hdbscan
