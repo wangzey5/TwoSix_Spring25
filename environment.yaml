@@ -1,6 +1,7 @@
 name: CMSE495-TwoSix
 channels:
   - conda-forge
+  - bioconda
 dependencies:
   - numpy
   - pandas
@@ -12,11 +13,13 @@ dependencies:
   - certifi
   - openssl
   - pymongo <= 4.7
-  - lxml
-  - fake-useragent
   - microsoft::playwright
-  - pytesseract
-  - pdf2image
+  - chromadb
+  - bertopic
+  - hdbscan
+  - sentence-transformers
+  - transformers
+  - phate
   - textract
   - setuptools
   - jupyter
