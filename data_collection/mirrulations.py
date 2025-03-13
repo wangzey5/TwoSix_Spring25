@@ -70,7 +70,7 @@ def getSubContents(base_path, subkey):
 getFileName = lambda path: path.split("/")[-1].split(".")[0]
 def getFileData(paths, dataExtractor=lambda file: json.load(file)):
     data = {getFileName(path).split("_")[0]: [] for path in paths} # init with []
-    temp = tempfile.NamedTemporaryFile(delete=False, delete_on_close=False)
+    temp = tempfile.NamedTemporaryFile(delete=False)
     for path in paths:
         bucket.download_file(path, temp.name)
         with open(temp.name, "r") as file:
@@ -112,7 +112,7 @@ def updateCollection(obj, collection):
 
 ### Main entry point, takes a single docket path and updates collections with data
 def storeDocketInfo(docketPath):
-    base_path =  f"{docketPath}text-{docketPath.split("/")[-2]}/"
+    base_path =  f"{docketPath}text-{docketPath.split('/')[-2]}/"
     fields = getSubKeys(base_path, fullKey=False)
     bson_comments = {}
     bson_documents = {}
