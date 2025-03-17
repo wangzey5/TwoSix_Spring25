@@ -1,5 +1,4 @@
 """Utils for collecting data from the murrilations mirrored dataset of regulations.gov"""
-import multiprocessing as mp
 import tempfile
 import json
 import os
@@ -31,6 +30,9 @@ def getDockets():
             Prefix=f"{agency}/"
         )
         dockets.extend([prefix.get("Prefix") for prefix in result.search("CommonPrefixes") if prefix is not None])
+
+    docket_collection = pymongo.MongoClient().mirrulations.raw_dockets
+    dockets = list(filter(lambda docket: not docExists(docket.split("/")[1], docket_collection), dockets))
 
     return dockets
 
@@ -101,9 +103,10 @@ def updateText(dict_, base_path, key):
     for ID, text in data.items():
         addUpdate(dict_, ID, {"text": text})
 
+docExists = lambda id, collection: collection.count_documents({"id": id}) > 0
 ### Update a mongoDB collection using a structured object
 def updateCollection(obj, collection):
-    docDoesNotExist = lambda data: collection.count_documents({"id": data["id"]}) == 0
+    docDoesNotExist = lambda data: not docExists(data["id"], collection)
     for ID in obj:
         obj[ID]["id"] = ID
     filtered = list(filter(docDoesNotExist, [data for data in obj.values()]))
