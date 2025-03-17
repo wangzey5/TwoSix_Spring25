@@ -11,5 +11,7 @@ parser.add_argument(
     help="The number of threads to spawn for parallelization"
 )
 
-with mp.Pool(4) as pool:
+args=parser.parse_args()
+
+with mp.Pool(args.nthreads) as pool:
     pool.map(storeDocketInfo, getDockets())
