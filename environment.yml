@@ -2,8 +2,10 @@ name: twosix_env2
 channels:
   - conda-forge
   - bioconda
+  - anaconda
 dependencies:
   - python=3.11
+  - seaborn=0.13.2
   - chromadb=0.6.3
   - bertopic=0.16.2
   - hdbscan=0.8.39
