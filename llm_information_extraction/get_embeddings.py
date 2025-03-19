@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 # Load environment variables from a .env file
-load_dotenv()
+load_dotenv("../.env")
 
 LM_STUDIO_API_BASE = os.getenv("LM_STUDIO_API_BASE")
 # use only models that support embedding

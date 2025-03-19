@@ -1,3 +1,4 @@
+import os
 import json
 from typing import List, Literal
 from pydantic import BaseModel, Field
@@ -6,7 +7,7 @@ from langchain.schema import HumanMessage, SystemMessage
 from dotenv import load_dotenv
 
 # Load environment variables from a .env file
-load_dotenv()
+load_dotenv("../.env")
 
 
 LM_STUDIO_API_BASE = os.getenv("LM_STUDIO_API_BASE")
