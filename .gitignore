@@ -13,3 +13,16 @@ apikeys.key
 # Temporary/Intermediate Data Files
 *.npy
 data/**
+# Python-related files
+*.pyc
+*.pyo
+*.pyd
+*.env
+*.venv
+env/
+venv/
+.Python
+migrations/
+pip-log.txt
+pip-delete-this-directory.txt
+pyvenv.cfg
