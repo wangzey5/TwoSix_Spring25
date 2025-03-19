@@ -1,4 +1,4 @@
-<img width="1041" alt="image" src="https://github.com/user-attachments/assets/f4126a29-3dcb-4133-ba46-dad4675cf6a6" /># CMSE 495 Capstone Project: Analyzing Public Feedback on Environmental Policies Using NLP
+# CMSE 495 Capstone Project: Analyzing Public Feedback on Environmental Policies Using NLP
 
 This project is part of **CMSE 495**, the final-year undergraduate capstone course for data science and computational data science majors at Michigan State University. The course involves team-based projects in collaboration with industry partners, where students develop and deliver data-driven solutions over the semester.
 
