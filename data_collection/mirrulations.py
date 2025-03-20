@@ -14,14 +14,17 @@ bucket = s3.Bucket("mirrulations")
 
 client = boto3.client('s3', config=unsigned)
 
-def getDockets():
+def getDockets(agencies=[]):
     """Get a list of dockets in the format `<agency>/<docketId>/`"""
+    docket_collection = pymongo.MongoClient().mirrulations.raw_dockets
     # inspired by https://stackoverflow.com/questions/54833895/how-to-get-top-level-folders-in-an-s3-bucket-using-boto3
     paginator = client.get_paginator('list_objects')
     result = paginator.paginate(Bucket='mirrulations', Delimiter='/')
 
-    agencies = [prefix.get("Prefix").rstrip("/") for prefix in result.search('CommonPrefixes') if prefix is not None]
+    if len(agencies) == 0:
+        agencies = [prefix.get("Prefix").rstrip("/") for prefix in result.search('CommonPrefixes') if prefix is not None]
     dockets = []
+    existing = 0
     for i, agency in enumerate(agencies):
         print(f"[{i}/{len(agencies)}]({agency})", end=" "*100 + "\r")
         result = paginator.paginate(
@@ -29,11 +32,11 @@ def getDockets():
             Delimiter='/',
             Prefix=f"{agency}/"
         )
-        dockets.extend([prefix.get("Prefix") for prefix in result.search("CommonPrefixes") if prefix is not None])
-
-    docket_collection = pymongo.MongoClient().mirrulations.raw_dockets
-    dockets = list(filter(lambda docket: not docExists(docket.split("/")[1], docket_collection), dockets))
-
+        agency_dockets = [prefix.get("Prefix") for prefix in result.search("CommonPrefixes") if prefix is not None]
+        filtered_dockets = list(filter(lambda docket: not docExists(docket.split("/")[1], docket_collection), agency_dockets))
+        existing += len(agency_dockets) - len(filtered_dockets)
+        dockets.extend(filtered_dockets)
+    print(F"Skipping {existing} pre-existing dockets...")
     return dockets
 
 ### Helper functions for getting keys
