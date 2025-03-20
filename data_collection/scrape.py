@@ -1,5 +1,6 @@
 import multiprocessing as mp
 import argparse
+from time import perf_counter
 
 from mirrulations import getDockets, storeDocketInfo
 
@@ -10,8 +11,26 @@ parser.add_argument(
     type=int,
     help="The number of threads to spawn for parallelization"
 )
+parser.add_argument(
+    "--time",
+    action="store_true",
+    help="Time how long it takes to get the list of dockets"
+)
+parser.add_argument(
+    "--agency",
+    default=None,
+    action="append",
+    help="The ID of an agency to get documents for. Can be used multiple times"
+)
 
 args=parser.parse_args()
 
+start = perf_counter()
+dockets = getDockets(args.agency)
+stop = perf_counter()
+
+if args.time:
+    print(f"Got Documents in {stop - start} seconds")
+
 with mp.Pool(args.nthreads) as pool:
-    pool.map(storeDocketInfo, getDockets())
+    pool.map(storeDocketInfo, dockets)
