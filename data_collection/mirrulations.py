@@ -27,7 +27,7 @@ def getDockets(agencies=[]):
     dockets = []
     existing = 0
     for i, agency in enumerate(agencies):
-        print(f"[{i}/{len(agencies)}]({agency})", end=" "*100 + "\r")
+        print(f"[{i}/{len(agencies)}]({agency})", end=", ")
         result = paginator.paginate(
             Bucket='mirrulations',
             Delimiter='/',
@@ -152,3 +152,4 @@ def storeDocketInfo(docketPath):
     updateCollection(bson_comments, db.raw_comments, db)
     updateCollection(bson_documents, db.raw_documents, db)
     updateCollection(bson_docket, db.raw_dockets, db)
+    print(f"[✓] {docketPath.split('/')[1]}")
