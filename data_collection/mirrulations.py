@@ -2,11 +2,18 @@
 import tempfile
 import json
 import os
+import sys
 
 import boto3
 from botocore import UNSIGNED, config
-import pymongo
 from pymongo.errors import OperationFailure
+
+
+sys.path.append(os.path.join(
+    os.path.dirname(__file__), 
+    os.path.pardir
+))
+from mongoUtils import mongoConnect
 
 unsigned=config.Config(signature_version=UNSIGNED)
 
@@ -17,7 +24,7 @@ client = boto3.client('s3', config=unsigned)
 
 def getDockets(agencies=[]):
     """Get a list of dockets in the format `<agency>/<docketId>/`"""
-    docket_collection = pymongo.MongoClient().mirrulations.raw_dockets
+    docket_collection = mongoConnect().mirrulations.raw_dockets
     # inspired by https://stackoverflow.com/questions/54833895/how-to-get-top-level-folders-in-an-s3-bucket-using-boto3
     paginator = client.get_paginator('list_objects')
     result = paginator.paginate(Bucket='mirrulations', Delimiter='/')
@@ -109,7 +116,8 @@ def updateText(dict_, base_path, key):
 
 docExists = lambda id, collection: collection.count_documents({"id": id}) > 0
 ### Update a mongoDB collection using a structured object
-def updateCollection(obj, collection, db):
+def updateCollection(obj, db, collection_name):
+    collection = db[collection_name]
     docDoesNotExist = lambda data: not docExists(data["id"], collection)
     for ID in obj:
         obj[ID]["id"] = ID
@@ -123,9 +131,17 @@ def updateCollection(obj, collection, db):
                 try:
                     text = doc.pop("text", None)
                     collection.insert_one(doc)
-                    db.errors.insert_one({"id": doc["id"], "errortype": "no_text"})
+                    db.errors.insert_one({
+                        "id": doc["id"],
+                        "target": collection_name,
+                        "errortype": "partial no_text"
+                    })
                 except:
-                    db.errors.insert_one({"id": doc["id"], "errortype": "insert_failed"})
+                    db.errors.insert_one({
+                        "id": doc["id"],
+                        "target": collection_name,
+                        "errortype": "insert_failed"
+                    })
 
 
 ### Main entry point, takes a single docket path and updates collections with data
@@ -148,8 +164,12 @@ def storeDocketInfo(docketPath):
     if "docket" in fields:
         updateJson(bson_docket, base_path, "docket")
     
-    db = pymongo.MongoClient().mirrulations
-    updateCollection(bson_comments, db.raw_comments, db)
-    updateCollection(bson_documents, db.raw_documents, db)
-    updateCollection(bson_docket, db.raw_dockets, db)
+    try:
+        db = mongoConnect().mirrulations
+    except:
+        print(f"ERROR! Failed to connect. Docket {docketPath.split('/')[1]} skipped!")
+        return
+    updateCollection(bson_comments, db, "raw_comments")
+    updateCollection(bson_documents, db, "raw_documents")
+    updateCollection(bson_docket, db, "raw_dockets")
     print(f"[✓] {docketPath.split('/')[1]}")
