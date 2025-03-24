@@ -20,7 +20,7 @@ For an example of our analysis and code implementation, see [DemoCode.ipynb](Dem
 
 ## Minimum Viable Product 
 
-For an example of our Minimum Viable Proudct (MVP), see [MPV Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
+For an example of our Minimum Viable Proudct (MVP), see [MVP Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
 
 ## Contributors
 
