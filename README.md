@@ -18,6 +18,10 @@ For installation instructions, please refer to [INSTALL.md](INSTALL.md).
 
 For an example of our analysis and code implementation, see [DemoCode.ipynb](DemoCode.ipynb).
 
+## Minimum Viable Product 
+
+For an example of our Minimum Viable Proudct (MVP), see [MPV Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
+
 ## Contributors
 
 - [Emma Fountain](https://github.com/RandumbPurson)
