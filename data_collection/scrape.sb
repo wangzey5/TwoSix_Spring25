@@ -1,0 +1,21 @@
+#!/bin/bash --login
+
+#SBATCH --time=24:00:00
+#SBATCH --mem-per-cpu=1G
+#SBATCH --cpus-per-task=64
+#SBATCH --job-name=TwoSix_Scraping
+#SBATCH --output=slurm-%x-%j.out
+
+rroot=/mnt/research/TwoSix
+
+module purge
+module load Miniforge3
+
+conda activate CMSE495-TwoSix
+
+killall mongod
+$rroot/mongodb/mongod-start
+
+python $rroot/CMSE-495/TwoSix_Spring25/data_collection/scrape.py --nthreads 64
+
+$rroot/mongodb/mongod-stop
