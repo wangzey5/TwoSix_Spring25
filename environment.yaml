@@ -6,25 +6,19 @@ dependencies:
   - numpy
   - pandas
   - matplotlib
-  - requests
   - ipykernel
   - conda-forge/label/python_rc::_python_rc
   - ca-certificates
   - certifi
   - openssl
-  - pymongo
-  - lxml
-  - fake-useragent
-  - microsoft::playwright
-  - pytesseract
-  - pdf2image
+  - pymongo <= 4.7
+  - boto3
   - chromadb
   - bertopic
   - hdbscan
   - sentence-transformers
   - transformers
   - phate
-  - textract
   - setuptools
   - jupyter
 prefix: /home/emmaf/miniforge3/envs/CMSE495-TwoSix
