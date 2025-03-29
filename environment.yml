@@ -1,4 +1,4 @@
-name: twosix_env2
+name: CMSE495-TwoSix
 channels:
   - conda-forge
   - bioconda
