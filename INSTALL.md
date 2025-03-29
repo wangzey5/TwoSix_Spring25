@@ -11,9 +11,9 @@ git clone https://github.com/wangzey5/TwoSix_Spring25.git
 
 We used [Anaconda](https://www.anaconda.com/) for environment management, please download and install it if it is not already installed.
 
-Our repo includes an `environment.yaml` file. To create a new environment using this file navigate to the base directory of our repo and run
+Our repo includes an `environment.yml` file. To create a new environment using this file navigate to the base directory of our repo and run
 ```bash
-conda env create --file environment.yaml
+conda env create --file environment.yml
 ```
 
 In order to replicate the data collection phase, first install MongoDB. This process is different on different machines, so please follow the [MongoDB Install Instructions](https://www.mongodb.com/docs/manual/installation/)
