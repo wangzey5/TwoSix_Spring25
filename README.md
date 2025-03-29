@@ -16,11 +16,11 @@ For installation instructions, please refer to [INSTALL.md](INSTALL.md).
 
 ## Demo
 
-For an example of our analysis and code implementation, see [DemoCode.ipynb](DemoCode.ipynb).
+For an example of our analysis, code implementation, and figure reproducability see [demo.ipynb](demo.ipynb).
 
 ## Minimum Viable Product 
 
-For an example of our Minimum Viable Proudct (MVP), see [MVP Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
+To view the teams Minimum Viable Proudct (MVP), see [MVP Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
 
 ## Contributors
 
