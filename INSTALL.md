@@ -29,6 +29,6 @@ conda activate CMSE495-TwoSix
 
 > **API Keys**: By default our code uses an API key owned by a team member. To use your own API key please create one at [regulations.gov API](https://open.gsa.gov/api/regulationsgov/), then either supply this to the `RegAPI` constructor in the `data_collection/API-Scraping.ipynb` file or to the `--apikey` argument when running `data_collection/scrape.py`
 
-Our data is collected using [Mirrulations](https://github.com/MoravianUniversity/mirrulations). However, for simplicity purposes, the [demo.ipynb](https://github.com/wangzey5/TwoSix_Spring25/blob/main/demo.ipynb) utilizes data collected from [regulations.gov API](https://open.gsa.gov/api/regulationsgov/).
+Our data is collected using [Mirrulations](https://github.com/MoravianUniversity/mirrulations). However, for simplicity purposes, the [demo.ipynb](https://github.com/wangzey5/TwoSix_Spring25/blob/main/demo.ipynb) utilizes sample data collected. 
 
 
