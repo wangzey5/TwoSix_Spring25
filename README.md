@@ -22,7 +22,7 @@ For an example of our analysis, code implementation, and figure reproducability 
 
 To view the teams Minimum Viable Proudct (MVP), see our [MVP Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
 
-## Contributors
+## Authors
 
 - [Emma Fountain](https://github.com/RandumbPurson)
 - [Ethan DeMott](https://github.com/edemott)
