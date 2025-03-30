@@ -2,7 +2,7 @@
 
 This project is part of **CMSE 495**, the final-year undergraduate capstone course for data science and computational data science majors at Michigan State University (MSU). The course involves team-based projects in collaboration with industry partners, where students develop and deliver data-driven solutions over the semester.
 
-Our team is collaborating with **[Two Six Technologies](https://twosixtech.com/)** on the project **"Analyzing Public Feedback on Environmental Policies Using Natural Language Processing."** The goal is to analyze public responses to environmental policies using NLP techniques. To achieve this, we are utilizing **[Mirrulations](https://github.com/MoravianUniversity/mirrulations)** to collect data from the **[Federal Register](https://www.regulations.gov/)**, storing climate related comments in **MongoDB** from federal documents.
+Our team is collaborating with **[Two Six Technologies](https://twosixtech.com/)** on the project **"Analyzing Public Feedback on Environmental Policies Using Natural Language Processing."** The goal is to analyze public responses to environmental policies using NLP techniques. To achieve this, we are utilizing **[Mirrulations](https://github.com/MoravianUniversity/mirrulations)** to collect data from the **[Federal Register](https://www.regulations.gov/)**, storing climate related comments in **MongoDB** from federal documents. Generating embeddings from this data using BERT, the data is then visualized with PHATE.
 
 ### Technologies Used:
 - MSU's **High Performance Computing Center (HPCC)** for high-performance computing and database storage  
