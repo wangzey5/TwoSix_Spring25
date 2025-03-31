@@ -29,3 +29,6 @@ To view the teams Minimum Viable Proudct (MVP), see our [MVP Video](https://medi
 - [Archan Tulpule](https://github.com/tulpulea)
 - [Archisha Bhatt](https://github.com/archishabhatt)
 - [Zeyu (Frank) Wang](https://github.com/wangzey5)
+
+## Acknowledgments
+This project was developed in collaboration with the TwoSix Technologies. Special thanks to all community partners and stakeholders for their support and guidance.
