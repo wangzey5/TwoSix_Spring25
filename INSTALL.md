@@ -1,10 +1,12 @@
 # Installation Instructions
 
-## MongoDB
+## MongoDB (Ethan writeup)
 
-## Mirrulations
+## Mirrulations (Archisha or Emma writeup)
 
-## Model and Embedding Storage
+## Data Preprocessing and Clearning (Archisha if needed)
 
-## Visualizaiton
+## Model and Embedding Storage (Archan writeup)
+
+## Visualizaiton (Archan or Archisha)
 
