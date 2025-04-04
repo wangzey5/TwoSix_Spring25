@@ -1,4 +1,4 @@
-# Installation Instructions
+# Installation Instructions - Demo
 
 ## Git Repo
 
@@ -28,7 +28,7 @@ conda activate CMSE495-TwoSix
 ## Data Collection
 
 
-Our data is collected using [Mirrulations](https://github.com/MoravianUniversity/mirrulations). However, for simplicity purposes, the [demo.ipynb](https://github.com/wangzey5/TwoSix_Spring25/blob/main/demo.ipynb) utilizes sample data collected. 
+Our data is collected using [Mirrulations](https://github.com/MoravianUniversity/mirrulations). However, for simplicity purposes, the [demo.ipynb](https://github.com/wangzey5/TwoSix_Spring25/blob/main/demo.ipynb) utilizes sample data collected. For more comprehensive instructions on replicating the full end to end project, see [INSTALL.md]. 
 
 
 
