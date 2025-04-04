@@ -20,7 +20,7 @@ For an example of our analysis, code implementation, and figure reproducability 
 
 ## Minimum Viable Product 
 
-To view the teams Minimum Viable Proudct (MVP), see our [MVP Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
+To view the team's Minimum Viable Proudct (MVP), see our [MVP Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
 
 ## Authors
 
