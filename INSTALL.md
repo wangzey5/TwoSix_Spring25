@@ -8,5 +8,5 @@
 
 ## Model and Embedding Storage (Archan writeup)
 
-## Visualizaiton (Archan or Archisha)
+## Visualizaiton (Archan or Archisha or Frank)
 
