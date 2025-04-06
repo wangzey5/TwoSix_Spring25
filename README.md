@@ -10,6 +10,14 @@ Our team is collaborating with **[Two Six Technologies](https://twosixtech.com/)
 - **PHATE** for visualization and dimensionality reduction of text embeddings  
 - **Python** for modeling and analysis
 
+## Minimum Viable Product 
+
+To view the team's Minimum Viable Proudct (MVP), see our [MVP Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
+
+## Final Report (DRAFT)
+
+The team's [Final Report](https://docs.google.com/document/d/1OcfW0yLE0WOuEKr-gNQjokFeKOpz5BYHP5uKpWHGN8Q/edit?usp=sharing).
+
 ## Installation
 
 For installation instructions, please refer to [INSTALL.md](INSTALL.md).
@@ -18,9 +26,6 @@ For installation instructions, please refer to [INSTALL.md](INSTALL.md).
 
 For an example of our analysis, code implementation, and figure reproducability see [demo.ipynb](demo.ipynb).
 
-## Minimum Viable Product 
-
-To view the team's Minimum Viable Proudct (MVP), see our [MVP Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
 
 ## Authors
 
