@@ -30,8 +30,10 @@ mongod --dbpath /mnt/research/your_directory/db --logpath /mnt/research/your_dir
 mongo
 ```
 
-
 ## Mirrulations (Archisha or Emma writeup)
+
+Once a server has been started on the current node, the scraper job can be started with `sbatch data_collection/scrape.sb`. It is a long-running checkpointing job, and will likely need to be ran multiple times to collect the full dataset, though further steps should be completeable with only a small subset
+
 
 ## Data Preprocessing and Cleaning (Archisha if needed)
 
