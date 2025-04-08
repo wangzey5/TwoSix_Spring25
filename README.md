@@ -36,4 +36,4 @@ For an example of our analysis, code implementation, and figure reproducability 
 - [Zeyu (Frank) Wang](https://github.com/wangzey5)
 
 ## Acknowledgments
-This project was developed in collaboration with the TwoSix Technologies. Special thanks to all community partners and stakeholders for their support and guidance.
+This project was developed in collaboration with the TwoSix Technologies. Special thanks to all community partners and course instructors for their support and guidance.
