@@ -25,6 +25,9 @@ dependencies:
   - pdf2image=1.17.0
   - phate=1.0.11
   - python-dotenv=1.1.0
-  - pip
+  - spacy=3.7.4
+  - nltk=3.8.1 
   - pip:
       - lmstudio==1.2.0
+      - ujson
+      - blingfire
