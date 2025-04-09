@@ -1,4 +1,7 @@
+
 # Installation Instructions
+
+*Note: These instructions are a work in progress and will continue to evolve as we update our methods and findings.*
 
 This project was primarily developed using [Michigan State University’s High-Performance Computing Center (HPCC)](https://icer.msu.edu/) . The following instructions outline how to reproduce the full workflow on the HPCC, including database setup, data collection, machine learning modeling, and visualization of results through model embeddings.
 
