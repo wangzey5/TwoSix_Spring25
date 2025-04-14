@@ -15,16 +15,16 @@ This project uses MongoDB version 3.6.8 installed manually on the HPCC. The inst
 
 ### Download and Install MongoDB v3.6.8
 ```bash
-cd /mnt/research/TwoSix #Navigate to your working project directory
+#Navigate to your working project directory
 wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.8.tgz
 tar -xvzf mongodb-linux-x86_64-3.6.8.tgz
 mv mongodb-linux-x86_64-3.6.8 mongodb
-export PATH=/mnt/research/your_directory/mongodb/bin:$PATH
+export PATH=$PWD/mongodb/bin:$PATH
 ```
 ### Create Data and Log Directories
 ```bash
-mkdir -p /mnt/research/your_directory/data
-mkdir -p /mnt/research/your_directory/log
+mkdir data
+mkdir log
 ```
 
 ### Starting and Connecting to the MongoDB Server
