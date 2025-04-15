@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh `cat ./IP.txt` 'killall mongod' 2>/dev/null
