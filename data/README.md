@@ -10,7 +10,7 @@ You can download the files here:
 - [comments.json](https://michiganstate.sharepoint.com/:u:/s/Section_SS25-CMSE-495-001-225215054-EL-32-A26-TwoSix/EXAYysZSTAFEld6TQo7WAGoBMKcPgRCMQbFAVKTIqbuyfQ?e=pPw0UJ)
 
 2. filtered_comments.csv is a result of running extract_csv.py on comments.json
-- [filtered_comments.csv](https://drive.google.com/your_shared_link)
+- [filtered_comments.csv]([https://drive.google.com/your_shared_link](https://michiganstate.sharepoint.com/:x:/s/Section_SS25-CMSE-495-001-225215054-EL-32-A26-TwoSix/EQERmIQ3SMNHgFfIE3J77FsBHJUC4tOYg69bBxVq75drWw?e=k2TeXe))
 
 3. df_processed.pkl is a pickle file (python objects processed into a byte stream) and consists of cleaned comment text and its metadata.
 - [df_processed.pkl](https://drive.google.com/your_shared_link)
