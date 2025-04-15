@@ -6,17 +6,13 @@ Please note, you need to have an MSU school email to access these.
 You can download the files here:
 
 
-1. comments.json is a an uncleaned json which was retrieved from our MongoDB server using the command "mongoexport"
-- [comments.json](https://michiganstate.sharepoint.com/:u:/s/Section_SS25-CMSE-495-001-225215054-EL-32-A26-TwoSix/EXAYysZSTAFEld6TQo7WAGoBMKcPgRCMQbFAVKTIqbuyfQ?e=pPw0UJ)
+1. [comments.json](https://michiganstate.sharepoint.com/:u:/s/Section_SS25-CMSE-495-001-225215054-EL-32-A26-TwoSix/EXAYysZSTAFEld6TQo7WAGoBMKcPgRCMQbFAVKTIqbuyfQ?e=pPw0UJ) is a an uncleaned json which was retrieved from our MongoDB server using the command "mongoexport"
 
-2. filtered_comments.csv is a result of running extract_csv.py on comments.json
-- [filtered_comments.csv]([https://drive.google.com/your_shared_link](https://michiganstate.sharepoint.com/:x:/s/Section_SS25-CMSE-495-001-225215054-EL-32-A26-TwoSix/EQERmIQ3SMNHgFfIE3J77FsBHJUC4tOYg69bBxVq75drWw?e=k2TeXe))
+2. [filtered_comments.csv](https://michiganstate.sharepoint.com/:x:/s/Section_SS25-CMSE-495-001-225215054-EL-32-A26-TwoSix/EQERmIQ3SMNHgFfIE3J77FsBHJUC4tOYg69bBxVq75drWw?e=k2TeXe) is a result of running extract_csv.py on comments.json
 
-3. df_processed.pkl is a pickle file (python objects processed into a byte stream) and consists of cleaned comment text and its metadata.
-- [df_processed.pkl](https://drive.google.com/your_shared_link)
+3. [df_processed.pkl]() is a pickle file (python objects processed into a byte stream) and consists of cleaned comment text and its metadata.
    
-5. data.pkl is a pickle file of our comments along with bert-processed embeddings, topics and probabilities.
-- [data.pkl](https://drive.google.com/your_shared_link)
+4. [data.pkl]() is a pickle file of our comments along with bert-processed embeddings, topics and probabilities.
 
 
 After downloading, place them in the `data/` directory so that the scripts can find them automatically.
