@@ -12,12 +12,3 @@ apikeys.key
 
 # Temporary/Intermediate Data Files
 *.npy
-
-# Data files (ignore all, except README.md)
-data/*
-!data/README.md
-
-# Explicitly ignore large data files
-# data/comments.json
-data/filtered_comments.csv
-data/df_sentences.pkl
