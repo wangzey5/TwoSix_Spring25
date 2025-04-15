@@ -1,3 +1,7 @@
+"""
+Script that uses the functions defined in `mirrulations.py` to scrape
+"""
+
 import multiprocessing as mp
 import argparse
 from time import perf_counter
@@ -25,6 +29,7 @@ parser.add_argument(
 
 args=parser.parse_args()
 
+# Get a list of missing dockets
 start = perf_counter()
 dockets = getDockets(args.agency)
 stop = perf_counter()
@@ -32,5 +37,6 @@ stop = perf_counter()
 if args.time:
     print(f"Got Documents in {stop - start} seconds")
 
+# Download all missing dockets in parallel
 with mp.Pool(args.nthreads) as pool:
     pool.map(storeDocketInfo, dockets)
