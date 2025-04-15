@@ -2,18 +2,21 @@
 import tempfile
 import json
 import os
-import sys
 
 import boto3
 from botocore import UNSIGNED, config
 from pymongo.errors import OperationFailure
 
-
-sys.path.append(os.path.join(
-    os.path.dirname(__file__), 
-    os.path.pardir
-))
-from mongoUtils import mongoConnect
+def mongoConnect():
+    """Connect to the MongoDB server at the IP specified in the file at `path`
+    """
+    try:
+        IPpath = os.path.join(__file__, os.path.pardir, "mongo", "IP.txt")
+        with open(IPpath, "r") as ipFile:
+            ip = ipFile.read().strip()
+            return pymongo.MongoClient(host=[ip])
+    except:
+        return pymongo.MongoClient()
 
 unsigned=config.Config(signature_version=UNSIGNED)
 
