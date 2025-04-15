@@ -29,7 +29,7 @@ mkdir log
 
 ### Starting and Connecting to the MongoDB Server
 ```bash
-mongod --dbpath /mnt/research/your_directory/data --logpath /mnt/research/your_directory/log/mongod.log --fork
+mongod --dbpath ./data --logpath ./log/mongod.log --fork
 mongo
 ```
 
@@ -46,7 +46,7 @@ module load Miniforge3
 
 To install the environment from the file
 ```bash
-conda create --file environment.yaml
+conda env create --prefix ./envs --file environment.yml
 ```
 
 Before running *any* python code please activate the environment with...
