@@ -9,28 +9,25 @@ The project is located within the /mnt/research/TwoSix directory on the HPCC. Pl
 
 To begin, connect to the HPCC via [SSH](https://docs.icer.msu.edu/Connect_to_HPCC_System/), and follow the steps below for a complete setup and execution pipeline.
 
-## MongoDB (Ethan writeup)
+## MongoDB 
 
-This project uses MongoDB version 3.6.8 installed manually on the HPCC. The instructions below guide you through installing the same version, starting the MongoDB server, and connecting to it for data operations. 
+This project uses MongoDB version 3.6.8 installed manually on the HPCC. The file [setup_mongodb.sh](https://github.com/wangzey5/TwoSix_Spring25/blob/main/setup_mongodb.sh) automates the follwoing steps:
 
-### Download and Install MongoDB v3.6.8
-```bash
-#Navigate to your working project directory
-wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.8.tgz
-tar -xvzf mongodb-linux-x86_64-3.6.8.tgz
-mv mongodb-linux-x86_64-3.6.8 mongodb
-export PATH=$PWD/mongodb/bin:$PATH
+- Downloads and extracts MongoDB
+- Adds MongoDB to the local enviroment path
+- Creates the necessary data and log directories
+- Starts the MongoDB server
+- Opens the MongoDB shell to verify it is working
+
+To exit, simply type ```exit```. 
+
+### Make sure the setupt script is executable
 ```
-### Create Data and Log Directories
-```bash
-mkdir data
-mkdir log
+chmod +x setup_mongodb.sh
 ```
-
-### Starting and Connecting to the MongoDB Server
-```bash
-mongod --dbpath ./data --logpath ./log/mongod.log --fork
-mongo
+### Run the script 
+```
+./setup_mongodb.sh
 ```
 
 ## Conda Setup
