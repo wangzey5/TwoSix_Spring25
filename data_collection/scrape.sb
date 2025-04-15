@@ -6,7 +6,7 @@
 #SBATCH --job-name=TwoSix_Scraping
 #SBATCH --output=slurm-%x-%j.out
 
-rroot=/mnt/research/TwoSix
+cd .. 
 
 module purge
 module load Miniforge3
@@ -14,8 +14,8 @@ module load Miniforge3
 conda activate CMSE495-TwoSix
 
 killall mongod
-$rroot/mongodb/mongod-start
+./mongodb/mongod-start
 
-python $rroot/CMSE-495/TwoSix_Spring25/data_collection/scrape.py --nthreads 64
+python ./data_collection/scrape.py --nthreads 64
 
-$rroot/mongodb/mongod-stop
+./mongodb/mongod-stop
