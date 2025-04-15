@@ -1,3 +1,3 @@
 ip addr show | grep -E "inet.*eth0" | awk -F" " '{print $2}' | cut -d"/" -f1 > ./IP.txt
 
-numactl --interleave=all mongod --dbpath ./data --logpath ./log/mongodb.log
+numactl --interleave=all mongod --dbpath ../data --logpath ../log/mongodb.log

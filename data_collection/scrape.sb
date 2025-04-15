@@ -13,12 +13,12 @@ module load Miniforge3
 
 conda activate CMSE495-TwoSix
 
-killall mongod
-./mongodb/mongod-start
+./mongo/mongod-stop
+./mongo/mongod-start
 
 python ./data_collection/scrape.py --nthreads 64
 
-./mongodb/mongod-stop
+./mongo/mongod-stop
 
 # Uncomment below to automatically resubmit
 # cd -
