@@ -19,3 +19,7 @@ killall mongod
 python ./data_collection/scrape.py --nthreads 64
 
 ./mongodb/mongod-stop
+
+# Uncomment below to automatically resubmit
+# cd -
+# sbatch $0
