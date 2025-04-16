@@ -1,4 +1,6 @@
-# Extracts a filtered .csv file from comments.json
+# Extract csv
+
+## Extracts a filtered .csv file from comments.json, as the original file is full of un-clean and unstructured json objects
 
 import json
 import pandas as pd
