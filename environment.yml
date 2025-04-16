@@ -32,4 +32,4 @@ dependencies:
       - lmstudio==1.2.0
       - ujson
       - blingfire
-      - mongoutils
+    
