@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from bertopic import BERTopic
+from pathlib import Path
+import plotly.io as pio
 
 # ---------- Run SBERT + BERTopic ----------
 def generate_embeddings_and_topics(
@@ -45,4 +47,32 @@ def generate_embeddings_and_topics(
 
 # ---------- Main ----------
 if __name__ == "__main__":
-    generate_embeddings_and_topics()
+    df, topic_model = generate_embeddings_and_topics()
+
+    # Create output directory
+    Path("outputs").mkdir(exist_ok=True)
+
+    print("📊 Generating BERTopic visualizations...")
+
+    # 1. Interactive 2D Topic Scatter Plot (UMAP-based) — HTML only
+    fig = topic_model.visualize_topics()
+    fig.write_html("outputs/topic_map.html")
+
+    # 2. Top Topics Bar Chart — PNG
+    fig = topic_model.visualize_barchart(top_n_topics=20)
+    fig.write_image("outputs/topic_barchart.png", format="png", scale=2)
+
+    # 3. Topic Similarity Heatmap — PNG
+    fig = topic_model.visualize_heatmap()
+    fig.write_image("outputs/topic_heatmap.png", format="png", scale=2)
+
+    # 4. Topic Hierarchy Dendrogram — PNG
+    fig = topic_model.visualize_hierarchy()
+    fig.write_image("outputs/topic_hierarchy.png", format="png", scale=2)
+
+    # 5. Topic Probability Distribution for an example comment — PNG
+    example_idx = df["probability"].apply(lambda x: isinstance(x, (list, np.ndarray))).idxmax()
+    fig = topic_model.visualize_distribution(df.loc[example_idx, "probability"])
+    fig.write_image("outputs/topic_distribution_example.png", format="png", scale=2)
+
+    print("✅ Saved visualizations to /outputs/ (HTML + PNG)")

@@ -1,3 +1,7 @@
+# Data Cleaning file
+
+## After obtaining a filtered_comments.csv, we attempt to pre-process and clean the data before putting it through BERTopic
+
 import pandas as pd
 import re
 import pickle
@@ -40,7 +44,7 @@ def load_filtered_unique_comments(input_csv, chunksize=10000):
         chunk = chunk[chunk['comment'].str.len() > 10]
         chunk = chunk[~chunk['comment'].str.contains(r"\b(?:attached|attachment)\b", case=False, na=False)]
         chunk['postedDate'] = pd.to_datetime(chunk['postedDate'], errors='coerce')
-        chunk = chunk[chunk['postedDate'].dt.year >= 1980]
+        chunk = chunk[chunk['postedDate'].dt.year >= 2000]
         chunk = chunk[~chunk['comment'].isin(seen)]
         seen.update(chunk['comment'])
         filtered_rows.append(chunk)
@@ -64,6 +68,7 @@ if __name__ == "__main__":
 
     print("📥 Loading and filtering comments...")
     df = load_filtered_unique_comments(input_path)
+    df = df[df["agency"].str.contains("EPA", case=False, na=False)]  # Filter for EPA
     df["cleaned_comment"] = df["comment"].apply(clean_text)
 
     print("✂️ Processing for sentiment...")
