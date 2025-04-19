@@ -33,3 +33,6 @@ dependencies:
       - lmstudio==1.2.0
       - kaleido==0.2.1
       - mongoutils
+      - ujson
+      - blingfire
+    
