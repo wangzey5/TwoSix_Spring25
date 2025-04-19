@@ -1,4 +1,5 @@
 .ipynb_checkpoints/
+**/.ipynb_checkpoints/
 __pycache__/
 
 # Slurm output
@@ -12,3 +13,13 @@ apikeys.key
 
 # Temporary/Intermediate Data Files
 *.npy
+
+# Output folder
+outputs/
+
+# Big data files
+*.json
+*.csv
+df_final.pkl
+df_processed.pkl
+sbert_data.pkl

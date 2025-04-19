@@ -8,7 +8,7 @@ import plotly.io as pio
 # ---------- Run SBERT + BERTopic ----------
 def generate_embeddings_and_topics(
     input_path="data/df_processed.pkl",
-    output_path="data/data.pkl",
+    output_path="data/sbert_data.pkl",
     model_save_path="bertopic_model",
     model_name="all-MiniLM-L6-v2"   
     #"all-mpnet-base-v2" may also be a good choice but is more memory intensive
@@ -66,13 +66,4 @@ if __name__ == "__main__":
     fig = topic_model.visualize_heatmap()
     fig.write_image("outputs/topic_heatmap.png", format="png", scale=2)
 
-    # 4. Topic Hierarchy Dendrogram — PNG
-    fig = topic_model.visualize_hierarchy()
-    fig.write_image("outputs/topic_hierarchy.png", format="png", scale=2)
-
-    # 5. Topic Probability Distribution for an example comment — PNG
-    example_idx = df["probability"].apply(lambda x: isinstance(x, (list, np.ndarray))).idxmax()
-    fig = topic_model.visualize_distribution(df.loc[example_idx, "probability"])
-    fig.write_image("outputs/topic_distribution_example.png", format="png", scale=2)
-
-    print("✅ Saved visualizations to /outputs/ (HTML + PNG)")
+    

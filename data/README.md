@@ -12,7 +12,7 @@ You can download the files here:
 
 3. [df_processed.pkl](https://michiganstate.sharepoint.com/:u:/s/Section_SS25-CMSE-495-001-225215054-EL-32-A26-TwoSix/Ef6h4T2pEA9Co7novo3cDDMB37k0PfEHP7GnctqXV3FsMA?e=W1MH6e) is a pickle file (python objects processed into a byte stream) and consists of cleaned comment text and its metadata.
    
-4. [data.pkl]() is a pickle file of our comments along with bert-processed embeddings, topics and probabilities.
+4. [data.pkl](https://michiganstate.sharepoint.com/:u:/s/Section_SS25-CMSE-495-001-225215054-EL-32-A26-TwoSix/EZkkBDbYPYhBnJ7eeZmbAUYBgccKoiGIvTpk4szqlW7ucQ?e=FRgZsN) is a pickle file of our comments along with bert-processed embeddings, topics and probabilities.
 
 
 After downloading, place them in the `data/` directory so that the scripts can find them automatically.
