@@ -10,13 +10,19 @@ Our team is collaborating with **[Two Six Technologies](https://twosixtech.com/)
 - **PHATE** for visualization and dimensionality reduction of text embeddings  
 - **Python** for modeling and analysis
 
+
+## Final Report
+
+The team's [Final Report](https://docs.google.com/document/d/1OcfW0yLE0WOuEKr-gNQjokFeKOpz5BYHP5uKpWHGN8Q/edit?usp=sharing).
+
+## Final Video
+
+To view the team's final project video, see our [Final Video](https://mediaspace.msu.edu/media/TwoSix+Final+Project+Video/1_g7i7fw71)
+
 ## Minimum Viable Product 
 
 To view the team's Minimum Viable Proudct (MVP), see our [MVP Video](https://mediaspace.msu.edu/media/TwoSix-MVP-Video/1_ziff1fki).
 
-## Final Report (DRAFT)
-
-The team's [Final Report](https://docs.google.com/document/d/1OcfW0yLE0WOuEKr-gNQjokFeKOpz5BYHP5uKpWHGN8Q/edit?usp=sharing).
 
 ## Installation
 
