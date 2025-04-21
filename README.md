@@ -7,8 +7,9 @@ Our team is collaborating with **[Two Six Technologies](https://twosixtech.com/)
 ### Technologies Used:
 - MSU's **High Performance Computing Center (HPCC)** for high-performance computing and database storage  
 - **MongoDB** for storing raw documents and **ChromaDB** for managing vector embeddings
+- **BERTopic** for generating sentence embeddings
 - **PHATE** for visualization and dimensionality reduction of text embeddings  
-- **Python** for modeling and analysis
+
 
 
 ## Final Report
