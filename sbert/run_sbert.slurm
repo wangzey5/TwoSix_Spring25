@@ -9,7 +9,7 @@
 #SBATCH --output=cleaning_%j.log
 #SBATCH --error=cleaning_%j.err
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=bhatta73@msu.edu
+#SBATCH --mail-user=netid@msu.edu # Replace with your MSU email address
 
 module purge
 module load Miniforge3
@@ -18,7 +18,7 @@ python -m spacy download en_core_web_sm
 
 cd /mnt/research/TwoSix/bhatta73/TwoSix_Spring25
 
-python eda_and_visualization/sbert.py
+python sbert/sbert.py
 
 # Optional speed/stability tweaks
 export OPENBLAS_NUM_THREADS=1

@@ -1,3 +1,6 @@
+# add_sentiment.py
+## This script adds sentiment analysis to the DataFrame using a pre-trained model from Hugging Face.
+ 
 import pandas as pd
 import torch
 import torch.nn.functional as F
