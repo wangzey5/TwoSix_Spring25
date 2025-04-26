@@ -14,9 +14,6 @@ apikeys.key
 # Temporary/Intermediate Data Files
 *.npy
 
-# Output folder
-outputs/
-
 # Big data files
 *.json
 *.csv
