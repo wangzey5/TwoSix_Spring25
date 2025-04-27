@@ -7,12 +7,14 @@ import torch.nn.functional as F
 from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
 def add_sentiment(df, batch_size=256):
     print("💬 Running sentiment analysis (normalized to [-1, 1])")
 
     model_name = "cardiffnlp/twitter-roberta-base-sentiment"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSequenceClassification.from_pretrained(model_name).to("cuda")
+    model = AutoModelForSequenceClassification.from_pretrained(model_name).to(device)
 
     comments = df["processed_comment"].fillna("neutral").tolist()
     sentiment_scores = []
@@ -47,10 +49,3 @@ def add_sentiment(df, batch_size=256):
 
     print("✅ Sentiment scores added to DataFrame")
     return df
-
-if __name__ == "__main__":
-    print("📂 Loading data")
-    df = pd.read_pickle("data/sbert_data.pkl")
-    df = add_sentiment(df)
-    df.to_pickle("data/df_final.pkl")
-    print("💾 Saved final pickle file")

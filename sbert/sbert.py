@@ -55,8 +55,13 @@ def generate_embeddings_and_topics(
 
 # ---------- Main ----------
 if __name__ == "__main__":
-    df, topic_model = generate_embeddings_and_topics()
+    df, topic_model = generate_embeddings_and_topics(
+        input_path="data/df_processed.pkl",
+        output_path="data/df_final.pkl",
+        model_save_path="bertopic_model"
+    )
     
+    print("💬 Running sentiment analysis...")
     df = add_sentiment(df)
     df.to_pickle("data/df_final.pkl")
 
@@ -76,5 +81,7 @@ if __name__ == "__main__":
     # 3. Topic Similarity Heatmap — PNG
     fig = topic_model.visualize_heatmap()
     fig.write_image("outputs/topic_heatmap.png", format="png", scale=2)
+    
+    print("✅ All outputs saved successfully!")
 
     
