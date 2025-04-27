@@ -2,14 +2,14 @@
 
 This project is part of **CMSE 495**, the final-year undergraduate capstone course for data science and computational data science majors at Michigan State University (MSU). The course involves team-based projects in collaboration with industry partners, where students develop and deliver data-driven solutions over the semester.
 
-Our team is collaborating with **[Two Six Technologies](https://twosixtech.com/)** on the project **"Analyzing Public Feedback on Environmental Policies Using Natural Language Processing."** The goal is to analyze public responses to environmental policies using NLP techniques. To achieve this, we are utilizing **[Mirrulations](https://github.com/MoravianUniversity/mirrulations)** to collect data from the **[Federal Register](https://www.regulations.gov/)**, storing climate related comments in **MongoDB** from federal documents. Generating embeddings from this data using BERT, the data is then visualized with PHATE.
+Our team is collaborating with **[Two Six Technologies](https://twosixtech.com/)** on the project **"Analyzing Public Feedback on Environmental Policies Using Natural Language Processing."** The goal is to analyze public responses to environmental policies using NLP techniques. To achieve this, we are utilizing **[Mirrulations](https://github.com/MoravianUniversity/mirrulations)** to collect data from the **[Federal Register](https://www.regulations.gov/)**, and subsequently storing climate related comments in **MongoDB** from federal documents. We then extract comments from the agency 'EPA', and generate embeddings from this data using BERT, perform sentiment analyses using HuggingFace transformers, and then visualize our output with PHATE, and compare it with other well-know dimension reducing models.
 
 ### Technologies Used:
-- MSU's **High Performance Computing Center (HPCC)** for high-performance computing and database storage  
-- **MongoDB** for storing raw documents and **ChromaDB** for managing vector embeddings
-- **BERTopic** for generating sentence embeddings
-- **PHATE** for visualization and dimensionality reduction of text embeddings  
-
+- MSU's **High Performance Computing Center (HPCC)** for high-performance computing and database storage  .
+- **MongoDB** for storing raw documents and **ChromaDB** for managing vector embeddings.
+- **BERTopic** for generating sentence embeddings.
+- **Transformer** for generating and gauging comment sentiment.
+- **PHATE** for visualization and dimensionality reduction of text embeddings . 
 
 
 ## Final Report
@@ -28,10 +28,6 @@ To view the team's Minimum Viable Proudct (MVP), see our [MVP Video](https://med
 ## Installation
 
 For installation instructions, please refer to [INSTALL.md](INSTALL.md).
-
-## Demo
-
-For an example of our analysis, code implementation, and figure reproducability see [demo.ipynb](demo.ipynb).
 
 
 ## Authors
