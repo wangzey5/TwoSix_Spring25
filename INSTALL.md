@@ -62,14 +62,15 @@ It is a long-running checkpointing job, and will likely need to be ran multiple 
 
 ## Data Extraction and Preprocessing
 
-You may extract the data through your own instance of mongodb, but if you have access to '/mnt/research/TwoSix/mongodb' on the HPCC, the MongoDB server will aleady contain the Mirrulations-scraped data under the 'mirrulations' database. To extract the scraped data into a json file 'comments.json' for pre-processing, follow these steps:
+You may extract the data through your own instance of mongodb, but if you have access to ```/mnt/research/TwoSix/mongodb``` on the HPCC, the MongoDB server will aleady contain the Mirrulations-scraped data under the ```'mirrulations'``` database. To extract the scraped data into a json file 'comments.json' for pre-processing, follow these steps:
 
 1. Connect to a development node, or an interactive node with sufficient memory.
 
 2. Ensure the MongoDB instance and server is up and running. (ensure you have followed instructions above)
 
-3. Export the data
-The MongoDB database tools including mongoexport are located at: ```bash
+3. Export the data.
+The MongoDB database tools, including mongoexport, are located at: 
+```bash
 /mnt/ufs18/rs-036/TwoSix/mongodb/mongodb-database-tools-ubuntu2004-x86_64-100.2.1/bin/mongoexport
 ```
 
@@ -82,7 +83,7 @@ To export the raw_comments collection from the mirrulations database into a json
   --out=/mnt/research/TwoSix/data/comments.json
 ```
 
-As the comments.json you have just extracted is very messy and unclean, we first extract a .csv out of the .json file by running extract_csv.py: 
+As the comments.json file you have just extracted is very messy and unclean, we first extract a .csv out of the .json file by running extract_csv.py: 
 [Make sure you are in the TwoSix_Spring25 repository. 'cd /your_path/TwoSix_Spring25']
 
 ```bash
