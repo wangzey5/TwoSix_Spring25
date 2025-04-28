@@ -27,7 +27,7 @@ To view the team's Minimum Viable Proudct (MVP), see our [MVP Video](https://med
 
 ## Installation
 
-For installation instructions, please refer to [INSTALL.md](INSTALL.md).
+For installation instructions, and the pipeline to run the code, please refer to [INSTALL.md](INSTALL.md).
 
 
 ## Authors
