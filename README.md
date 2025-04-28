@@ -14,7 +14,7 @@ Our team is collaborating with **[Two Six Technologies](https://twosixtech.com/)
 
 ## Final Report
 
-The team's [Final Report](https://docs.google.com/document/d/1OcfW0yLE0WOuEKr-gNQjokFeKOpz5BYHP5uKpWHGN8Q/edit?usp=sharing).
+The team's [Final Report](https://github.com/wangzey5/TwoSix_Spring25/blob/main/Final%20Report.pdf).
 
 ## Final Video
 
